@@ -72,3 +72,22 @@ struct AdvancedTraining: Identifiable {
 struct FreeTime {
     var time: Date
 }
+
+struct MockData {
+    static let sampleDoctors = [sampleDoctor, sampleDoctor, sampleDoctor]
+    static let sampleDoctor = Doctor(id: "0000001",
+                                     first_name: "Иван",
+                                     patronymic: "Иванович", 
+                                     last_name: "Иванов",
+                                        gender_label: "Мужчина",
+                                     text_chat_price: 300,
+                                     video_chat_price: 400,
+                                     home_price: 500,
+                                     hospital_price: 600,
+                                     rank: 0, rank_label: "0",
+                                     scientific_degree_label: "доцент",
+                                     category: 0,
+                                     scientific_degree: 3,
+                                     category_label: "нет",
+                                     ratings_rating: 0)
+}

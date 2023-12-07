@@ -11,18 +11,21 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct DoctorListView: View {
     
-    @State private var doctors = ["Ian", "Diana", "Shaun"]
+    @State private var doctors: [Doctor] = MockData.sampleDoctors
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(doctors, id: \.self) { doctor in
-                    Text(doctor)
+                ForEach(doctors, id: \.id) { doctor in
+                    DoctorCell(doctor: doctor)
                 } .onDelete(perform: delete)
             }
+            .navigationTitle("Врачи")
+            .navigationBarTitleDisplayMode(.inline)
         }
+        
     }
     
     func delete(at offsets: IndexSet) {
@@ -31,5 +34,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    DoctorListView()
 }
