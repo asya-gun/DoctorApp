@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D760F30A2B2269E5009FC386 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F3092B2269E5009FC386 /* NetworkManager.swift */; };
 		D79D53D12B21E6A300FC5918 /* DoctorAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D53D02B21E6A300FC5918 /* DoctorAppApp.swift */; };
 		D79D53D32B21E6A300FC5918 /* DoctorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D53D22B21E6A300FC5918 /* DoctorListView.swift */; };
 		D79D53D52B21E6A400FC5918 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D79D53D42B21E6A400FC5918 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D760F3092B2269E5009FC386 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D79D53CD2B21E6A300FC5918 /* DoctorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoctorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79D53D02B21E6A300FC5918 /* DoctorAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorAppApp.swift; sourceTree = "<group>"; };
 		D79D53D22B21E6A300FC5918 /* DoctorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorListView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				D79D53D02B21E6A300FC5918 /* DoctorAppApp.swift */,
 				D79D53D22B21E6A300FC5918 /* DoctorListView.swift */,
+				D760F3092B2269E5009FC386 /* NetworkManager.swift */,
 				D79D53E22B222C6E00FC5918 /* DoctorCell.swift */,
 				D79D53DE2B2209FD00FC5918 /* DoctorModel.swift */,
 				D79D53D42B21E6A400FC5918 /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 			files = (
 				D79D53D32B21E6A300FC5918 /* DoctorListView.swift in Sources */,
 				D79D53DF2B2209FD00FC5918 /* DoctorModel.swift in Sources */,
+				D760F30A2B2269E5009FC386 /* NetworkManager.swift in Sources */,
 				D79D53E32B222C6E00FC5918 /* DoctorCell.swift in Sources */,
 				D79D53D12B21E6A300FC5918 /* DoctorAppApp.swift in Sources */,
 			);
