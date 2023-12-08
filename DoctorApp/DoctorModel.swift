@@ -107,8 +107,8 @@ struct HigherEducation: Identifiable, Decodable {
     var university: String
     var specialization: String
     var qualification: String
-    var start_date: Int
-    var end_date: Int
+    var start_date: Date
+    var end_date: Date
 }
 
 struct Specialization: Identifiable, Decodable {
@@ -120,8 +120,8 @@ struct WorkExperience: Identifiable, Decodable {
     var id: Int
     var organization: String?
     var position: String?
-    var start_date: Int?
-    var end_date: Int?
+    var start_date: Date?
+    var end_date: Date?
 }
 
 struct EducationType: Identifiable, Decodable {
@@ -133,7 +133,7 @@ struct AdvancedTraining: Identifiable, Decodable {
     var id: Int
     var organization: String
     var position: String
-    var end_date: Int
+    var end_date: Date
     var file: String
 }
 struct FreeTime: Decodable {
@@ -145,7 +145,7 @@ enum TaskError: Error {
     case decodingError
     case incorrectUrlError
     case urlDidNotLoadError
-    case responseError
+    case corruptedResponseError
     case dataNotReceivedError
 }
 
@@ -167,4 +167,8 @@ struct MockData {
                                      category_label: "нет",
                                      ratings_rating: 0
     )
+    static let doctorDescription = """
+                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                 """
 }

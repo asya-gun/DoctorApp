@@ -24,7 +24,7 @@ class NetworkManager: NSObject {
                 return
             }
             guard let response = response as? HTTPURLResponse else {
-                completion(.failure(.responseError))
+                completion(.failure(.corruptedResponseError))
                 return
             }
             guard let data = data else {
