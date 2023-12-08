@@ -34,7 +34,9 @@ class NetworkManager: NSObject {
             
             do {
                 let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .secondsSince1970
                 let decodedResponse = try decoder.decode(FirstResponse.self, from: data)
+//                print(decodedResponse.record.data.users.first(where: {$0.work_expirience != nil})?.work_expirience?[0].start_date)
                 completion(.success(decodedResponse.record.data.users))
             } catch(let catchError) {
                 print(catchError)

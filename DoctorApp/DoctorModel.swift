@@ -122,6 +122,7 @@ struct WorkExperience: Identifiable, Decodable {
     var position: String?
     var start_date: Date?
     var end_date: Date?
+    var until_now: Bool
 }
 
 struct EducationType: Identifiable, Decodable {
