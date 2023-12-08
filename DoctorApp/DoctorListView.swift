@@ -13,7 +13,7 @@ import SwiftUI
 
 struct DoctorListView: View {
     
-    @State private var doctors: [Doctor] = MockData.sampleDoctors
+    @State private var doctors: [Doctor] = []
     
     var body: some View {
         NavigationView {
@@ -25,11 +25,26 @@ struct DoctorListView: View {
             .navigationTitle("Врачи")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .onAppear { receiveDoctors() }
         
     }
     
     func delete(at offsets: IndexSet) {
         doctors.remove(atOffsets: offsets)
+    }
+    
+    func receiveDoctors() {
+        NetworkManager.shared.getDoctors { [self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let doctors):
+                    self.doctors = doctors
+                case.failure(let error):
+                    print(error)
+                }
+            }
+            
+        }
     }
 }
 

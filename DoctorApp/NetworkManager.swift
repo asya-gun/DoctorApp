@@ -15,29 +15,30 @@ class NetworkManager: NSObject {
     
     func getDoctors(completion: @escaping (Result <[Doctor], TaskError>) -> Void) {
         guard let url = URL(string: baseURL) else {
-            completion(.failure(.someError))
+            completion(.failure(.incorrectUrlError))
             return
         }
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
-            if let error = error {
-                completion(.failure(.someError))
+            if let _ = error {
+                completion(.failure(.urlDidNotLoadError))
                 return
             }
             guard let response = response as? HTTPURLResponse else {
-                completion(.failure(.someError))
+                completion(.failure(.responseError))
                 return
             }
             guard let data = data else {
-                completion(.failure(.someError))
+                completion(.failure(.dataNotReceivedError))
                 return
             }
             
             do {
                 let decoder = JSONDecoder()
-                let decodedResponse = try decoder.decode(UrlRequest.self, from: data)
-                completion(.success(decodedResponse.data.users))
-            } catch {
-                completion(.failure(.someError))
+                let decodedResponse = try decoder.decode(FirstResponse.self, from: data)
+                completion(.success(decodedResponse.record.data.users))
+            } catch(let catchError) {
+                print(catchError)
+                completion(.failure(.decodingError))
             }
         }
         task.resume()

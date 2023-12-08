@@ -31,7 +31,7 @@ struct Doctor: Identifiable, Decodable {
     var scientific_degree: Int
     var category_label: String
     var specialization: [Specialization]?
-    var ratings_rating: Int
+    var ratings_rating: Double
     
 //    enum CodingKeys: String, CodingKey {
 //        case id
@@ -89,11 +89,11 @@ struct Doctor: Identifiable, Decodable {
     
 }
 
-//struct UrlRecord: Decodable {
-//    var record: UrlRequest
-//}
+struct FirstResponse: Decodable {
+    var record: Record
+}
 
-struct UrlRequest: Decodable {
+struct Record: Decodable {
     var count: Int
     var data: UrlRequestData
 }
@@ -142,6 +142,11 @@ struct FreeTime: Decodable {
 
 enum TaskError: Error {
     case someError
+    case decodingError
+    case incorrectUrlError
+    case urlDidNotLoadError
+    case responseError
+    case dataNotReceivedError
 }
 
 struct MockData {
@@ -160,5 +165,6 @@ struct MockData {
                                      category: 0,
                                      scientific_degree: 3,
                                      category_label: "нет",
-                                     ratings_rating: 0)
+                                     ratings_rating: 0
+    )
 }
