@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct AppointmentView: View {
+    
+    @EnvironmentObject private var viewModel: DoctorListViewModel
     let doctor: Doctor
+    
     var body: some View {
         ZStack {
             Color(uiColor: .systemGray6)
@@ -62,4 +65,5 @@ struct AppointmentView: View {
 
 #Preview {
     AppointmentView(doctor: MockData.sampleDoctor)
+        .environmentObject(DoctorListViewModel())
 }

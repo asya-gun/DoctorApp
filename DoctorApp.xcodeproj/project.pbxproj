@@ -12,6 +12,7 @@
 		D76553962B236490009DACF4 /* DoctorCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76553952B236490009DACF4 /* DoctorCardView.swift */; };
 		D76553982B23A286009DACF4 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76553972B23A286009DACF4 /* Date + Extension.swift */; };
 		D765539A2B23CFEC009DACF4 /* AppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76553992B23CFEC009DACF4 /* AppointmentView.swift */; };
+		D779BC2A2B248F0F00FF3CD6 /* DoctorListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779BC292B248F0F00FF3CD6 /* DoctorListViewModel.swift */; };
 		D79D53D12B21E6A300FC5918 /* DoctorAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D53D02B21E6A300FC5918 /* DoctorAppApp.swift */; };
 		D79D53D32B21E6A300FC5918 /* DoctorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D53D22B21E6A300FC5918 /* DoctorListView.swift */; };
 		D79D53D52B21E6A400FC5918 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D79D53D42B21E6A400FC5918 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		D76553952B236490009DACF4 /* DoctorCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorCardView.swift; sourceTree = "<group>"; };
 		D76553972B23A286009DACF4 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		D76553992B23CFEC009DACF4 /* AppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentView.swift; sourceTree = "<group>"; };
+		D779BC292B248F0F00FF3CD6 /* DoctorListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorListViewModel.swift; sourceTree = "<group>"; };
 		D79D53CD2B21E6A300FC5918 /* DoctorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoctorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79D53D02B21E6A300FC5918 /* DoctorAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorAppApp.swift; sourceTree = "<group>"; };
 		D79D53D22B21E6A300FC5918 /* DoctorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorListView.swift; sourceTree = "<group>"; };
@@ -46,6 +48,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D779BC252B24835C00FF3CD6 /* DoctorListView */ = {
+			isa = PBXGroup;
+			children = (
+				D779BC282B2483C900FF3CD6 /* Views */,
+			);
+			path = DoctorListView;
+			sourceTree = "<group>";
+		};
+		D779BC262B24838A00FF3CD6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D79D53DE2B2209FD00FC5918 /* DoctorModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D779BC272B24839E00FF3CD6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D76553972B23A286009DACF4 /* Date + Extension.swift */,
+				D760F3092B2269E5009FC386 /* NetworkManager.swift */,
+				D76553932B235F47009DACF4 /* ImageLoader.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D779BC282B2483C900FF3CD6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D79D53D22B21E6A300FC5918 /* DoctorListView.swift */,
+				D79D53E22B222C6E00FC5918 /* DoctorCell.swift */,
+				D76553952B236490009DACF4 /* DoctorCardView.swift */,
+				D76553992B23CFEC009DACF4 /* AppointmentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D779BC2D2B24E7E500FF3CD6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D779BC292B248F0F00FF3CD6 /* DoctorListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		D79D53C42B21E6A300FC5918 = {
 			isa = PBXGroup;
 			children = (
@@ -66,14 +113,10 @@
 			isa = PBXGroup;
 			children = (
 				D79D53D02B21E6A300FC5918 /* DoctorAppApp.swift */,
-				D79D53D22B21E6A300FC5918 /* DoctorListView.swift */,
-				D76553952B236490009DACF4 /* DoctorCardView.swift */,
-				D76553992B23CFEC009DACF4 /* AppointmentView.swift */,
-				D76553972B23A286009DACF4 /* Date + Extension.swift */,
-				D760F3092B2269E5009FC386 /* NetworkManager.swift */,
-				D79D53E22B222C6E00FC5918 /* DoctorCell.swift */,
-				D76553932B235F47009DACF4 /* ImageLoader.swift */,
-				D79D53DE2B2209FD00FC5918 /* DoctorModel.swift */,
+				D779BC252B24835C00FF3CD6 /* DoctorListView */,
+				D779BC2D2B24E7E500FF3CD6 /* ViewModel */,
+				D779BC272B24839E00FF3CD6 /* Utilities */,
+				D779BC262B24838A00FF3CD6 /* Models */,
 				D79D53D42B21E6A400FC5918 /* Assets.xcassets */,
 				D79D53D62B21E6A400FC5918 /* Preview Content */,
 			);
@@ -165,6 +208,7 @@
 				D76553942B235F47009DACF4 /* ImageLoader.swift in Sources */,
 				D760F30A2B2269E5009FC386 /* NetworkManager.swift in Sources */,
 				D79D53E32B222C6E00FC5918 /* DoctorCell.swift in Sources */,
+				D779BC2A2B248F0F00FF3CD6 /* DoctorListViewModel.swift in Sources */,
 				D79D53D12B21E6A300FC5918 /* DoctorAppApp.swift in Sources */,
 				D76553982B23A286009DACF4 /* Date + Extension.swift in Sources */,
 			);

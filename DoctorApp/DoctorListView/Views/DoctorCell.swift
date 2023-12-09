@@ -9,7 +9,12 @@ import SwiftUI
 
 struct DoctorCell: View {
     
+    @EnvironmentObject private var viewModel: DoctorListViewModel
     let doctor: Doctor
+    private var hasTime: Bool {
+        return viewModel.doesDoctorHaveTime(doctor: doctor)
+    }
+    @State private var tappedHeart: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -27,69 +32,71 @@ struct DoctorCell: View {
                                 .font(.system(size: 16))
                                 .bold()
                             Spacer()
-                            Button(action: {}, label: {
-                                Image(systemName: "heart")
+                            Button(action: {
+                                self.tappedHeart.toggle()
+                            }, label: {
+                                Image(systemName: tappedHeart ? "heart.fill" : "heart")
                                     .font(.system(size: 24))
-                                    .foregroundStyle(Color(uiColor: .systemGray3))
+                                    .foregroundStyle(tappedHeart ? Color(uiColor: .systemPink) : Color(uiColor: .systemGray3))
                             })
                             
                         }
-
+                        
                         Text("\(doctor.first_name) \(doctor.patronymic ?? "")")
                             .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                             .font(.system(size: 16))
                             .bold()
                     }
-                VStack(alignment: .leading) {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(Color(uiColor: .systemPink))
+                            Text("\(doctor.ratings_rating, specifier: "%.1f")")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
                     HStack {
-                        Image(systemName: "star.fill")
-                            .foregroundColor(Color(uiColor: .systemPink))
-                        Text("\(doctor.ratings_rating, specifier: "%.1f")")
+                        Text("Врач")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                        Image(systemName: "circle.fill")
+                            .font(.system(size: 4))
+                            .foregroundStyle(.secondary)
+                        Text("\(viewModel.findAmountOfExperience(doctor: doctor))")
+                            .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
-                }
-                Text("Врач / стаж 10 лет")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                Text("от 0 Р")
+                    
+                    Text("от 0 Р")
                         .font(.title3)
                         .bold()
                 }
             }
-
-
+            
+            
             
             
             HStack(alignment: .center) {
                 NavigationLink(destination: DoctorCardView(doctor: doctor)) {
-                    Text(findFreeTime(doctor: doctor))
+                    Text(viewModel.findFreeTime(doctor: doctor))
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
-                        .background(Color.pink)
+                        .background(viewModel.replaceColor(hasTime: hasTime))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .foregroundColor(.white)
                         .bold()
                         .font(.system(size: 16))
                 }
             }
-
-                
-                
+            
         }
         .padding(.vertical, 8)
         .background(Color.white)
-    }
-    func findFreeTime(doctor: Doctor) -> String {
-        if let time = doctor.nearest_reception_time, time > 0 {
-            return "Записаться"
-        } else if let freeTime = doctor.free_reception_time, freeTime.count > 0 {
-            return "Записаться"
-        } else {
-            return "Нет свободного расписания"
-        }
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 
 #Preview {
     DoctorCell(doctor: MockData.sampleDoctor)
+        .environmentObject(DoctorListViewModel())
 }

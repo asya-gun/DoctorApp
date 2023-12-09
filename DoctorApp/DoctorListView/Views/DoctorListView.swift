@@ -13,41 +13,25 @@ import SwiftUI
 
 struct DoctorListView: View {
     
-    @State private var doctors: [Doctor] = []
+    @EnvironmentObject private var viewModel: DoctorListViewModel
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(doctors, id: \.id) { doctor in
+                ForEach(viewModel.doctors, id: \.id) { doctor in
                     DoctorCell(doctor: doctor)
-                } .onDelete(perform: delete)
+                } 
             }
             .navigationTitle("Врачи")
             .navigationBarTitleDisplayMode(.inline)
+            .listRowSpacing(12)
         }
-        .onAppear { receiveDoctors() }
+        .onAppear { viewModel.receiveDoctors() }
         
-    }
-    
-    func delete(at offsets: IndexSet) {
-        doctors.remove(atOffsets: offsets)
-    }
-    
-    func receiveDoctors() {
-        NetworkManager.shared.getDoctors { [self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let doctors):
-                    self.doctors = doctors
-                case.failure(let error):
-                    print(error)
-                }
-            }
-            
-        }
     }
 }
 
 #Preview {
     DoctorListView()
+        .environmentObject(DoctorListViewModel())
 }
