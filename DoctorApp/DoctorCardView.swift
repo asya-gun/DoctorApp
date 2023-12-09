@@ -15,56 +15,55 @@ struct DoctorCardView: View {
         ZStack {
             Color(uiColor: .systemGray6)
                 .ignoresSafeArea()
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 12) {
                 
                 HStack {
                     
                     DoctorRemoteImage(urlString: doctor.avatar ?? "")
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 100, height: 100)
+                        .frame(width: 80, height: 80)
                         .font(.largeTitle)
                         .cornerRadius(50)
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 6) {
                         Text(doctor.last_name)
                             .lineLimit(1)
                             .font(.system(size: 18))
+                            .bold()
                         Text("\(doctor.first_name) \(doctor.patronymic ?? "")")
                             .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                             .font(.system(size: 16))
+                            .bold()
                     }
                     .padding(.leading, 8)
                     .navigationTitle("Врач")
                 }
-                
-                VStack(alignment: .leading) {
-                    HStack {
+                .padding(.leading, 8)
+                HStack(alignment: .center, spacing: 16) {
+                    VStack(spacing: 10) {
                         Image(systemName: "clock")
-                        Text(findAmountOfExperience(doctor: doctor))
-                    }
-                    HStack {
                         Image(systemName: "briefcase")
-                        Text("\(findCategory(category: doctor.category) ?? findDegree(degree: doctor.scientific_degree) ?? "Не указано")")
-                    }
-                    HStack {
                         Image(systemName: "graduationcap")
-                        Text(findEducation(doctor: doctor))
-                    }
-                    HStack {
                         Image(systemName: "location")
+                    }
+                    .padding(.leading, 8)
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(findAmountOfExperience(doctor: doctor))
+                        Text("\(findCategoryOrDegree(doctor: doctor))")
+                        Text(findEducation(doctor: doctor))
                         Text(findWorkExperience(doctor: doctor))
                     }
                 }
                 Text("Стоимость услуг: от \(findMinPrice(doctor: doctor)) рублей")
                     .padding()
-                    .padding(.horizontal)
                     .frame(maxWidth: .infinity)
                     .background(Color(uiColor: .white))
                     .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding(.horizontal, 8)
                 
                 Text(MockData.doctorDescription)
-                    .padding()
+                    .padding(8)
                     .lineLimit(nil)
-                    .padding(.bottom)
+                    .padding(.bottom, 30)
                 VStack(alignment: .center) {
                     NavigationLink(destination: AppointmentView(doctor: doctor)) {
                         Text("Записаться")
@@ -169,6 +168,10 @@ struct DoctorCardView: View {
         }
         let years = (((seconds/60)/60)/24)/365
         return "Стаж \(years) лет"
+    }
+    
+    func findCategoryOrDegree(doctor: Doctor) -> String {
+        return findCategory(category: doctor.category) ?? findDegree(degree: doctor.scientific_degree) ?? "Не указано"
     }
     
 }
